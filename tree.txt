@@ -1,0 +1,38 @@
+.
+├── grading.rsync-filter.txt
+├── Makefile
+├── places
+│   ├── pom.xml
+│   ├── pstructure.txt
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── wethinkcode
+│       │   │       └── places
+│       │   │           ├── db
+│       │   │           │   └── memory
+│       │   │           │       └── PlacesDb.java
+│       │   │           ├── model
+│       │   │           │   ├── Places.java
+│       │   │           │   └── Town.java
+│       │   │           ├── PlaceNameService.java
+│       │   │           └── PlacesCsvParser.java
+│       │   └── resources
+│       │       ├── cleanData
+│       │       │   └── clean.py
+│       │       └── PlaceNamesZA2008.csv
+│       └── test
+│           └── java
+│               └── wethinkcode
+│                   └── places
+│                       ├── db
+│                       │   └── memory
+│                       │       └── PlacesDbTest.java
+│                       ├── PlaceNameApiTest.java
+│                       ├── PlaceNameServiceTest.java
+│                       ├── PlacesCsvParserTest.java
+│                       └── PlacesTestData.java
+├── pom.xml
+└── tree.txt
+
+17 directories, 18 files
