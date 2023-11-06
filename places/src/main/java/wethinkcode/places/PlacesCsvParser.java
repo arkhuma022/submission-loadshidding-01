@@ -46,6 +46,15 @@ public class PlacesCsvParser{
         return places;
     }
     
+    /**
+     * The parseDataLines function reads the data from a file and creates a list of towns.
+     *
+     *
+     * @param final LineNumberReader in Read the lines from a file
+     *
+     * @return A places object
+     *
+     */
     @VisibleForTesting
     Places parseDataLines( final LineNumberReader in ) throws IOException{
         
@@ -86,6 +95,16 @@ public class PlacesCsvParser{
         }
     }
 
+    /**
+     * The splitLineIntoValues function takes a String line and splits it into an array of Strings.
+     * The function uses the split method to split the line by commas, but also accounts for empty values.
+     * If a value is empty, then it will be replaced with null in the array of Strings that is returned.
+
+     *
+     * @param String line Split the line into values
+     *
+     * @return An array of strings
+     */
     public String[] splitLineIntoValues(String line) {
         String[] values = line.split(",", -1); 
 
@@ -102,6 +121,18 @@ public class PlacesCsvParser{
         return townList;
     }
 
+    /**
+     * The createTown function takes in a String array of lines and an index.
+     * It then extracts the name, feature description, and province from the lines using helper functions.
+     * If all three are not null, it checks if the feature description is either &quot;Town&quot; or &quot;Urban Area&quot;.
+     * If so, it creates a new Town object with those parameters and adds it to townList.
+
+     *
+     * @param String[] lines Extract the name, feature description and province from the line
+     *
+     * @return A town object
+     *
+     */
     public Town createTown(String[] lines){
 
         String name = extractName(lines,indexName);
@@ -121,6 +152,18 @@ public class PlacesCsvParser{
            
         return null;
     }
+    /**
+     * The extractProvince function takes in a String array of values and an integer indexProvince.
+     * It then checks if the indexProvince is less than the length of values, and if so, it sets value to be equal to
+     * the value at that index in values. Then it adds this value to provinceList and returns it. If not, then null is returned.
+
+     *
+     * @param String[] values Store the values of each line in the csv file
+     * @param int indexProvince Specify the index of the province in the values array
+     *
+     * @return The province at the given index
+     *
+     */
     public String extractProvince(String[] values, int indexProvince) {
         if (indexProvince < values.length) {
             String value = values[indexProvince];
@@ -130,6 +173,17 @@ public class PlacesCsvParser{
         return null;
     }
     
+    /**
+     * The extractName function takes in a String array and an integer index.
+     * It returns the value at that index if it exists, or null otherwise.
+
+     *
+     * @param String[] values Store the values of a line in the csv file
+     * @param int indexName Specify the index of the array that will be used to extract a name
+     *
+     * @return The value of the indexname element in values
+     *
+     */
     public static String extractName(String[] values, int indexName) {
         if (indexName < values.length) {
             String value = values[indexName];
@@ -138,6 +192,17 @@ public class PlacesCsvParser{
         return null;
     }
     
+    /**
+     * The extractFeatureDescription function takes in an array of strings and an integer index.
+     * It returns the string at that index, or null if there is no such element.
+
+     *
+     * @param String[] values Pass the values of a row in the csv file
+     * @param int indexFeatureDescription Specify the index of the feature description in the array
+     *
+     * @return The value of the feature description at the specified index
+     *
+     */
     public static String extractFeatureDescription(String[] values, int indexFeatureDescription) {
         if (indexFeatureDescription < values.length) {
             String value = values[indexFeatureDescription];
@@ -146,6 +211,17 @@ public class PlacesCsvParser{
         return null;
     }
 
+    /**
+     * The getCsvFile function takes a String as an argument and returns a File object.
+     * The function checks to see if the file exists, and if it does not exist, throws
+     * an exception. If the file does exist, then it is returned as a File object.
+
+     *
+     * @param String csvFileName Specify the name of the file that is to be read
+     *
+     * @return A file object
+     *
+     */
     public File getCsvFile( String csvFileName ) throws FileNotFoundException {
         File csvFile = new File( csvFileName );
         if (csvFile.exists()) {
@@ -154,20 +230,5 @@ public class PlacesCsvParser{
             throw new FileNotFoundException( "File " + csvFileName + " does not exist." );
         }
     }
-
-    // public static void main(String[] args) throws FileNotFoundException, IOException {
-    //     PlacesCsvParser parser = new PlacesCsvParser();
-    //     File csvFile = parser.getCsvFile("places/src/main/resources/PlaceNamesZA2008.csv");
-
-    //     // Now, create a LineNumberReader using the csvFile
-
-    //     parser.parseCsvSource(csvFile);
-    //     int count =0;
-    //     for (Town town : townList) {
-    //         System.out.println(town.getName() + " in the " + town.getProvince());
-    //         count ++;
-            
-    //     }
-    // }
 
     }
